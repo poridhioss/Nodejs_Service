@@ -1,17 +1,17 @@
 USERNAME ?= konami98
-IMAGE ?= nodejs-backend
+SERVER_IMAGE ?= nodejs-backend
 TAG ?= latest
 
 .PHONY: build push run clean
 
 build:
-	docker build --no-cache -t $(USERNAME)/$(IMAGE):$(TAG) .
+	docker build --no-cache -t $(USERNAME)/$(SERVER_IMAGE):$(TAG) .
 
 push:
-	docker push $(USERNAME)/$(IMAGE):$(TAG)
+	docker push $(USERNAME)/$(SERVER_IMAGE):$(TAG)
 
 run:
-	docker run -p 3000:3000 $(USERNAME)/$(IMAGE):$(TAG)
+	docker run -p 3000:3000 $(USERNAME)/$(SERVER_IMAGE):$(TAG)
 
 clean:
-	docker rmi $(USERNAME)/$(IMAGE):$(TAG) || true
+	docker rmi $(USERNAME)/$(SERVER_IMAGE):$(TAG) || true
